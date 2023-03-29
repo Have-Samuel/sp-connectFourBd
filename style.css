@@ -36,8 +36,13 @@ td {
   padding: 0.5rem 1.1rem;
   text-align: center;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .dotted td {
   border: 1px dotted #d6d5d1;
+}
+
+.dotted td:hover {
+  background-color: yellow;
 }
