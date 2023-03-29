@@ -11,7 +11,7 @@ body {
   font-size: 18px;
   line-height: 1.5;
   color: #333;
-  background: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 h1 {
@@ -26,15 +26,18 @@ h1 {
 
 table {
   margin: 2rem auto;
+  background-color: #fff;
+  padding: 0.2rem;
 }
 
 td {
   color: magenta;
-  border: 1px solid #1a1919;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
+  border: 1px solid #9e9a9a;
+  padding: 0.5rem 1.1rem;
   text-align: center;
   background-color: #fff;
+}
+
+.dotted td {
+  border: 1px dotted #d6d5d1;
 }
