@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Lato:wght@700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: 'delicious', sans-serif;
+  color: #333;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+table {
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 0.2rem;
+}
+
+td {
+  color: magenta;
+  border: 1px solid #9e9a9a;
+  padding: 0.5rem 1.1rem;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.dotted td {
+  border: 1px dotted #d6d5d1;
+}
+
+.dotted td:hover {
+  background-color: yellow;
+}
