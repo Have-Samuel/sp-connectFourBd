@@ -20,12 +20,14 @@ body {
   height: 540px;
   margin: 0 auto;
   background-color: #fff;
-  border: 1px solid #9e9a9a;
+  border: 10px solid #9e9a9a;
+  display: flex;
+  flex-wrap: wrap;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-#game {
+/* #game {
   height: 540px;
   width: 630px;
 }
@@ -58,4 +60,4 @@ td {
 
 .dotted td:hover {
   background-color: yellow;
-}
+} */
