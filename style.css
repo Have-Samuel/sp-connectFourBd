@@ -61,3 +61,10 @@ td {
 .empty:hover {
   background-color: yellow;
 }
+
+.cell-empty {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #dd2e2e;
+}

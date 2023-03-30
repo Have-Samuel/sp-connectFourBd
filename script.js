@@ -27,12 +27,16 @@ function setGame() {
       // Add an id to the cell for easy access
       // cell.id = `${r.toString()}-${c.toString()}`;
       cell.id = `${r}-${c}`;
+      board.append(cell);
     }
     board.push(row);
   }
 }
 
 // When the cells are clicked
-cells.addEventListener('click', () => {
-  setGame();
+cells.forEach((cell) => {
+  cell.addEventListener('click', () => {
+    // console.log(cell.id);
+    setGame();
+  });
 });
