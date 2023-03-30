@@ -8,41 +8,65 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  text-align: center;
+  /* font-size: 18px;
   line-height: 1.5;
-  color: #333;
+  color: #333; */
   background-color: #f4f4f4;
 }
 
-h1 {
-  font-size: 3rem;
-  font-weight: 500;
-  font-family: 'delicious', sans-serif;
-  color: #333;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  text-align: center;
+#board {
+  width: 630px;
+  height: 540px;
+  margin: 0 auto;
+  background-color: rgb(246, 246, 250);
+  border: 10px solid #e4dfdf;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-table {
-  margin: 2rem auto;
-  background-color: #fff;
+.cell-empty {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #dd2e2e;
+  border: 5px solid navy;
+}
+
+/* #game {
+  height: 540px;
+  width: 630px;
+}
+ 
+h1 {
+  font-family: 'delicious', sans-serif;
+  color: #634848;
+  margin-top: 1rem;
+  text-align: center;
+} */
+
+/* table {
+  margin: 1rem auto;
+  background-color: #0a5cf3;
   padding: 0.2rem;
 }
 
 td {
-  color: magenta;
+  color: #fff;
   border: 1px solid #9e9a9a;
-  padding: 0.5rem 1.1rem;
+  padding: 1rem 2.7rem;
   text-align: center;
   background-color: #fff;
   cursor: pointer;
 }
 
-.dotted td {
+.empty {
   border: 1px dotted #d6d5d1;
 }
 
-.dotted td:hover {
+.empty:hover {
   background-color: yellow;
-}
+} */
