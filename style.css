@@ -9,9 +9,6 @@
 body {
   font-family: 'Lato', sans-serif;
   text-align: center;
-  /* font-size: 18px;
-  line-height: 1.5;
-  color: #333; */
   background-color: #f4f4f4;
 }
 
@@ -48,7 +45,7 @@ body {
   height: 540px;
   width: 630px;
 }
- 
+
 h1 {
   font-family: 'delicious', sans-serif;
   color: #634848;

@@ -6,6 +6,7 @@ const playerYellow = 'Y'; // Yellow player
 const currentPlayer = playerRed; // Current player
 
 const gameOver = false; // Game over flag
+let currColumns = []; // Current columns
 // let board; // Board array
 
 const rows = 6; // Rows
@@ -21,24 +22,36 @@ function setPiece() {
   const coords = this.id.split('-'); // split - '0-0' => ['0', '0']
   // since they are strings, convert them to numbers
   // with the parseInt() function
-  const r = parseInt(coords[0]);
-  const c = parseInt(coords[1]);
+  let r = parseInt(coords[0]);
+  let c = parseInt(coords[1]);
+
+  // Check if the column is full
+  r = currColumns[c];
+  if (r < 0) {
+    return; // If the column is full, do nothing
+  }
 
   // add the piece to the board
   board[r][c] = currentPlayer;
-  const cell = this;
+  const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
-    // cell.classList.remove('cell-empty');
     cell.classList.add('cell-red');
+    currentPlayer = playerYellow;
   } else {
-    // cell.classList.remove('cell-empty');
     cell.classList.add('cell-yellow');
+    currentPlayer = playerRed;
   }
+  // Updating the row height for the column
+  // subtract r to move up by one row
+  r -= 1;
+  // Update the Array to the new row
+  currColumns[c] = r;
 }
 
 // Set the game
 function setGame() {
   // board = [];
+  currColumns = [5, 5, 5, 5, 5, 5, 5]; // Current columns
 
   // Create the board array
   for (let r = 0; r < rows; r++) {
@@ -53,7 +66,7 @@ function setGame() {
       cell.classList.add('cell-empty');
       // Add an id to the cell for easy access
       // cell.id = `${r.toString()}-${c.toString()}`;
-      cell.id = `${r}-${c}`;
+      cell.id = `${r.toString()}-${c.toString()}`;
       board.append(cell);
 
       // When the cells are clicked
