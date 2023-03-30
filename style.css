@@ -23,17 +23,25 @@ body {
   border: 10px solid navy;
   display: flex;
   flex-wrap: wrap;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2); */
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .cell-empty {
-  width: 70px;
-  height: 70px;
+  width: 71px;
+  height: 71px;
   margin: 8px;
   border-radius: 50%;
   background-color: #f3eded;
   border: 5px solid navy;
+}
+
+.red-cell {
+  background-color: red;
+}
+
+.yellow-cell {
+  background-color: yellow;
 }
 
 /* #game {
