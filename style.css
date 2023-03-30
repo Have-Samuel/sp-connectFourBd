@@ -19,19 +19,28 @@ body {
   width: 630px;
   height: 540px;
   margin: 0 auto;
-  background-color: #fff;
-  border: 10px solid #9e9a9a;
+  background-color: rgb(246, 246, 250);
+  border: 10px solid #e4dfdf;
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
+.cell-empty {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #dd2e2e;
+  border: 5px solid navy;
+}
+
 /* #game {
   height: 540px;
   width: 630px;
 }
-
+ 
 h1 {
   font-family: 'delicious', sans-serif;
   color: #634848;
@@ -39,9 +48,9 @@ h1 {
   text-align: center;
 } */
 
-table {
+/* table {
   margin: 1rem auto;
-  background-color: #fff;
+  background-color: #0a5cf3;
   padding: 0.2rem;
 }
 
@@ -60,11 +69,4 @@ td {
 
 .empty:hover {
   background-color: yellow;
-}
-
-.cell-empty {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background-color: #dd2e2e;
-}
+} */
