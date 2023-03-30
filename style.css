@@ -19,8 +19,8 @@ body {
   width: 630px;
   height: 540px;
   margin: 0 auto;
-  background-color: rgb(246, 246, 250);
-  border: 10px solid #e4dfdf;
+  background-color: rgb(4, 4, 247);
+  border: 10px solid navy;
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
