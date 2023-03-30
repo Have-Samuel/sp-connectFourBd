@@ -1,4 +1,3 @@
-const board = document.querySelector('#board');
 // const cells = document.querySelectorAll('.empty');
 
 const playerRed = 'R'; // Red player
@@ -13,7 +12,7 @@ const cols = 7; // Columns
 
 // Set the game
 function setGame() {
-  board = [];
+  // board = [];
 
   // Create the board array
   for (let r = 0; r < rows; r++) {
@@ -24,6 +23,7 @@ function setGame() {
 
       // Add the cells to the DOM
       // <div id="0-0"class="cell-empty"></div>
+      const board = document.querySelector('#board');
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
       // Add an id to the cell for easy access
