@@ -6,7 +6,7 @@ const playerYellow = 'Y'; // Yellow player
 const currentPlayer = playerRed; // Current player
 
 const gameOver = false; // Game over flag
-let currColumns = []; // Current columns
+let currColumns; // Current columns
 // let board; // Board array
 
 const rows = 6; // Rows
@@ -61,11 +61,9 @@ function setGame() {
       row.push(null);
 
       // Add the cells to the DOM
-      // <div id="0-0"class="cell-empty"></div>
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
       // Add an id to the cell for easy access
-      // cell.id = `${r.toString()}-${c.toString()}`;
       cell.id = `${r.toString()}-${c.toString()}`;
       board.append(cell);
 
