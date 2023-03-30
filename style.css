@@ -37,7 +37,7 @@ h1 {
   color: #634848;
   margin-top: 1rem;
   text-align: center;
-}
+} */
 
 table {
   margin: 1rem auto;
@@ -48,16 +48,16 @@ table {
 td {
   color: #fff;
   border: 1px solid #9e9a9a;
-  padding: 0.5rem 1.1rem;
+  padding: 1rem 2.7rem;
   text-align: center;
   background-color: #fff;
   cursor: pointer;
 }
 
-.dotted td {
+.empty {
   border: 1px dotted #d6d5d1;
 }
 
-.dotted td:hover {
+.empty:hover {
   background-color: yellow;
-} */
+}
