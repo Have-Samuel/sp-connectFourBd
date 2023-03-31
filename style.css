@@ -9,9 +9,6 @@
 body {
   font-family: 'Lato', sans-serif;
   text-align: center;
-  /* font-size: 18px;
-  line-height: 1.5;
-  color: #333; */
   background-color: #f4f4f4;
 }
 
@@ -19,8 +16,8 @@ body {
   width: 630px;
   height: 540px;
   margin: 0 auto;
-  background-color: rgb(246, 246, 250);
-  border: 10px solid #e4dfdf;
+  background-color: rgb(4, 4, 247);
+  border: 10px solid navy;
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
@@ -28,19 +25,27 @@ body {
 }
 
 .cell-empty {
-  width: 80px;
-  height: 80px;
-  margin: 5px;
+  width: 71px;
+  height: 71px;
+  margin: 8px;
   border-radius: 50%;
-  background-color: #dd2e2e;
+  background-color: #f3eded;
   border: 5px solid navy;
+}
+
+.red-cell {
+  background-color: red;
+}
+
+.yellow-cell {
+  background-color: yellow;
 }
 
 /* #game {
   height: 540px;
   width: 630px;
 }
- 
+
 h1 {
   font-family: 'delicious', sans-serif;
   color: #634848;
