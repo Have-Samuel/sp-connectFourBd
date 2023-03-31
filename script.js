@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable radix */
+/* eslint-disable no-const-assign */
 const board = document.querySelector('#board');
 // const cells = document.querySelectorAll('.empty');
 
@@ -23,7 +26,7 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  let c = parseInt(coords[1]);
+  const c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
