@@ -26,7 +26,7 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  let c = parseInt(coords[1]);
+  const c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
@@ -37,10 +37,10 @@ function setPiece() {
   board[r][c] = currentPlayer;
   const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
-    cell.classList.add('cell-red');
+    cell.classList.add('red-cell ');
     currentPlayer = playerYellow;
   } else {
-    cell.classList.add('cell-yellow');
+    cell.classList.add('yellow-cell');
     currentPlayer = playerRed;
   }
   // Updating the row height for the column
@@ -65,13 +65,14 @@ function setGame() {
       // Add the cells to the DOM
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
+      cell.addEventListener('click', setPiece);
       // Add an id to the cell for easy access
       cell.id = `${r.toString()}-${c.toString()}`;
       board.append(cell);
 
       // When the cells are clicked
-      cell.addEventListener('click', setPiece);
     }
+    board.push(row);
   }
 }
 
