@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
 /* eslint-disable radix */
 /* eslint-disable no-const-assign */
@@ -15,6 +16,35 @@ let currColumns; // Current columns
 const rows = 6; // Rows
 const cols = 7; // Columns
 
+// Set the winner
+function setWinner(r, c) {
+  // Set the game over flag
+  let winner = document.getElementById('winner');
+  if (board[r][c] === playerRed) {
+    winner.innerText = 'Red player wins!';
+  } else {
+    winner.innerText = 'Yellow player wins!';
+  }
+  gameOver = true;
+}
+
+// Check for a winner
+function checkWinner() {
+// Check for a horizontal winner
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols - 3; c++) { // we use cols - 3 because we need to check 4 cells
+      if (board[r][c] !== null) {
+        if (board[r][c] === board[r][c + 1]
+          && board[r][c] === board[r][c + 2]
+          && board[r][c] === board[r][c + 3]) {
+          setWinner(r, c);
+          return;
+        }
+      }
+    }
+  }
+}
+
 // Set the piece
 function setPiece() {
   if (gameOver) {
@@ -26,7 +56,7 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  const c = parseInt(coords[1]);
+  let c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
@@ -46,8 +76,9 @@ function setPiece() {
   // Updating the row height for the column
   // subtract r to move up by one row
   r -= 1;
-  // Update the Array to the new row
-  currColumns[c] = r;
+  currColumns[c] = r;// Update the Array to the new row
+
+  checkWinner();
 }
 
 // Set the game
@@ -72,8 +103,8 @@ function setGame() {
 
       // When the cells are clicked
     }
-    board.push(row);
   }
+  board.push(rows);
 }
 
 window.onload = () => {
