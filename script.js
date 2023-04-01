@@ -35,7 +35,8 @@ function setPiece() {
   }
 
   // add the piece to the board
-  board[r][c] = currentPlayer;
+  board[r] = currentPlayer;
+  board[c] = currentPlayer;
   const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
     cell.classList.add('cell-red');
@@ -79,33 +80,3 @@ function setGame() {
 window.onload = () => {
   setGame();
 };
-
-// function setGame() {
-//   // board = [];
-//   // Create the board array
-//   for (let r = 0; r < rows; r++) {
-//     const row = [];
-//     for (let c = 0; c < cols; c++) {
-//       // Add the cells to the board
-//       row.push(null);
-
-//       // Add the cells to the DOM
-//       // <div id="0-0"class="cell-empty"></div>
-//       const cell = document.createElement('div');
-//       cell.classList.add('cell-empty');
-//       // Add an id to the cell for easy access
-//       // cell.id = `${r.toString()}-${c.toString()}`;
-//       cell.id = `${r}-${c}`;
-//       board.append(cell);
-//     }
-//     board.push(row);
-//   }
-// }
-
-// // When the cells are clicked
-// cells.forEach((cell) => {
-//   cell.addEventListener('click', () => {
-//     // console.log(cell.id);
-//     setGame();
-//   });
-// });
