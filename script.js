@@ -26,17 +26,15 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  const c = parseInt(coords[1]);
+  let c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
   if (r < 0) {
     return; // If the column is full, do nothing
   }
-
   // add the piece to the board
-  board[r] = currentPlayer;
-  board[c] = currentPlayer;
+  board[r][c] = currentPlayer;
   const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
     cell.classList.add('cell-red');
