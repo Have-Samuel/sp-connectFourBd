@@ -30,10 +30,10 @@ function setWinner(r, c) {
 
 // Check for a winner
 function checkWinner() {
-// Check for a horizontal winner
+// Checking horizontally
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols - 3; c++) { // we use cols - 3 because we need to check 4 cells
-      if (board[r][c] !== null) {
+      if (board[r][c] !== ' ') {
         if (board[r][c] === board[r][c + 1]
           && board[r][c] === board[r][c + 2]
           && board[r][c] === board[r][c + 3]) {
@@ -41,6 +41,29 @@ function checkWinner() {
           return;
         }
       }
+    }
+  }
+}
+
+// Checking vertically
+for (let c = 0; c < cols; c++) {
+  for (let r = 0; r < rows - 3; r++) {
+    if (board[r][c] !== ' ') {
+      if (board[r][c] === board[r + 1][c]
+        && board[r][c] === board[r + 2][c]
+        && board[r][c] === board[r + 3][c]) {
+        setWinner(r, c);
+        return;
+      }
+    }
+  }
+}
+
+// Anti Diagonally
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    if (board[r][c] !== ' ') {
+      if (board[r][c] === board[r + 1][c + 1] && board[r + 1])
     }
   }
 }
