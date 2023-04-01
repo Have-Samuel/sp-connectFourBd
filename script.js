@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
 /* eslint-disable radix */
 /* eslint-disable no-const-assign */
@@ -15,6 +16,60 @@ let currColumns; // Current columns
 const rows = 6; // Rows
 const cols = 7; // Columns
 
+// Set the winner
+function setWinner(r, c) {
+  // Set the game over flag
+  let winner = document.getElementById('winner');
+  if (board[r][c] === playerRed) {
+    winner.innerText = 'Red player wins!';
+  } else {
+    winner.innerText = 'Yellow player wins!';
+  }
+  gameOver = true;
+}
+
+// Check for a winner
+function checkWinner() {
+// Checking horizontally
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols - 3; c++) { // we use cols - 3 because we need to check 4 cells
+      if (board[r][c] !== ' ') {
+        if (board[r][c] === board[r][c + 1]
+          && board[r][c] === board[r][c + 2]
+          && board[r][c] === board[r][c + 3]) {
+          setWinner(r, c);
+          return;
+        }
+      }
+    }
+  }
+}
+
+// Checking vertically
+for (let c = 0; c < cols; c++) {
+  for (let r = 0; r < rows - 3; r++) {
+    if (board[r][c] !== ' ') {
+      if (board[r][c] === board[r + 1][c]
+        && board[r][c] === board[r + 2][c]
+        && board[r][c] === board[r + 3][c]) {
+        setWinner(r, c);
+        return;
+      }
+    }
+  }
+}
+
+// Anti Diagonally
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    if (board[r][c] !== ' ') {
+      if (board[r][c] === board[r + 1][c + 1] && board[r + 1]) {
+        
+      }
+    }
+  }
+}
+
 // Set the piece
 function setPiece() {
   if (gameOver) {
@@ -26,29 +81,29 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  const c = parseInt(coords[1]);
+  let c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
   if (r < 0) {
     return; // If the column is full, do nothing
   }
-
   // add the piece to the board
   board[r][c] = currentPlayer;
   const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
-    cell.classList.add('cell-red');
+    cell.classList.add('red-cell ');
     currentPlayer = playerYellow;
   } else {
-    cell.classList.add('cell-yellow');
+    cell.classList.add('yellow-cell');
     currentPlayer = playerRed;
   }
   // Updating the row height for the column
   // subtract r to move up by one row
   r -= 1;
-  // Update the Array to the new row
-  currColumns[c] = r;
+  currColumns[c] = r;// Update the Array to the new row
+
+  checkWinner();
 }
 
 // Set the game
@@ -66,46 +121,17 @@ function setGame() {
       // Add the cells to the DOM
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
+      cell.addEventListener('click', setPiece);
       // Add an id to the cell for easy access
       cell.id = `${r.toString()}-${c.toString()}`;
       board.append(cell);
 
       // When the cells are clicked
-      cell.addEventListener('click', setPiece);
     }
   }
+  board.push(rows);
 }
 
 window.onload = () => {
   setGame();
 };
-
-// function setGame() {
-//   // board = [];
-//   // Create the board array
-//   for (let r = 0; r < rows; r++) {
-//     const row = [];
-//     for (let c = 0; c < cols; c++) {
-//       // Add the cells to the board
-//       row.push(null);
-
-//       // Add the cells to the DOM
-//       // <div id="0-0"class="cell-empty"></div>
-//       const cell = document.createElement('div');
-//       cell.classList.add('cell-empty');
-//       // Add an id to the cell for easy access
-//       // cell.id = `${r.toString()}-${c.toString()}`;
-//       cell.id = `${r}-${c}`;
-//       board.append(cell);
-//     }
-//     board.push(row);
-//   }
-// }
-
-// // When the cells are clicked
-// cells.forEach((cell) => {
-//   cell.addEventListener('click', () => {
-//     // console.log(cell.id);
-//     setGame();
-//   });
-// });
