@@ -1,17 +1,14 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-plusplus */
 /* eslint-disable radix */
-/* eslint-disable no-const-assign */
-const board = document.querySelector('#board');
-// const cells = document.querySelectorAll('.empty');
-
+const winner = document.getElementById('winner');
 const playerRed = 'R'; // Red player
 const playerYellow = 'Y'; // Yellow player
-const currentPlayer = playerRed; // Current player
+let currentPlayer = playerRed; // Current player
 
-const gameOver = false; // Game over flag
-let currColumns; // Current columns
+let gameOver = false; // Game over flag
 // let board; // Board array
+
+let currColumns; // Current columns
+let board; // Board array
 
 const rows = 6; // Rows
 const cols = 7; // Columns
@@ -19,52 +16,71 @@ const cols = 7; // Columns
 // Set the winner
 function setWinner(r, c) {
   // Set the game over flag
-  let winner = document.getElementById('winner');
+  // const winner = document.getElementById('winner');
   if (board[r][c] === playerRed) {
     winner.innerText = 'Red player wins!';
   } else {
     winner.innerText = 'Yellow player wins!';
   }
+
   gameOver = true;
 }
 
 // Check for a winner
 function checkWinner() {
-// Checking horizontally
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols - 3; c++) { // we use cols - 3 because we need to check 4 cells
+  // Checking horizontally // Sliding window
+  for (let r = 0; r < rows; r += 1) {
+    for (let c = 0; c < cols - 3; c += 1) { // we use cols - 3 because we need to check 4 cells
       if (board[r][c] !== ' ') {
         if (board[r][c] === board[r][c + 1]
-          && board[r][c] === board[r][c + 2]
-          && board[r][c] === board[r][c + 3]) {
+          && board[r][c + 1] === board[r][c + 2]
+          && board[r][c + 2] === board[r][c + 3]) {
           setWinner(r, c);
           return;
         }
       }
     }
   }
-}
 
-// Checking vertically
-for (let c = 0; c < cols; c++) {
-  for (let r = 0; r < rows - 3; r++) {
-    if (board[r][c] !== ' ') {
-      if (board[r][c] === board[r + 1][c]
-        && board[r][c] === board[r + 2][c]
-        && board[r][c] === board[r + 3][c]) {
-        setWinner(r, c);
-        return;
+  // Checking vertically
+  for (let c = 0; c < cols; c += 1) {
+    for (let r = 0; r < rows - 3; r += 1) { // Why we use three, to check three ahead of us
+      if (board[r][c] !== ' ') {
+        if (board[r][c] === board[r + 1][c]
+          && board[r + 1][c] === board[r + 2][c]
+          && board[r + 2][c] === board[r + 3][c]) {
+          setWinner(r, c);
+          return;
+        }
       }
     }
   }
-}
 
-// Anti Diagonally
-for (let r = 0; r < rows; r++) {
-  for (let c = 0; c < cols; c++) {
-    if (board[r][c] !== ' ') {
-      if (board[r][c] === board[r + 1][c + 1] && board[r + 1]) {
-        
+  // Anti Diagonally
+  for (let r = 0; r < rows - 3; r += 1) {
+    for (let c = 0; c < cols - 3; c += 1) {
+      if (board[r][c] !== ' ') {
+        if (
+          board[r][c] === board[r + 1][c + 1]
+          && board[r + 1][c + 1] === board[r + 2][c + 2]
+          && board[r + 2][c + 2] === board[r + 3][c + 3]) {
+          setWinner(r, c);
+          return;
+        }
+      }
+    }
+  }
+
+  // Diagonally
+  for (let r = 3; r < rows; r += 1) {
+    for (let c = 0; c < cols - 3; c += 1) {
+      if (board[c][r] !== ' ') {
+        if (board[r][c] === board[r - 1][c + 1]
+          && board[r - 1][c + 1] === board[r - 2][c + 2]
+          && board[r - 2][c + 2] === board[r - 3][c + 3]) {
+          setWinner(r, c);
+          return;
+        }
       }
     }
   }
@@ -81,7 +97,7 @@ function setPiece() {
   // since they are strings, convert them to numbers
   // with the parseInt() function
   let r = parseInt(coords[0]);
-  let c = parseInt(coords[1]);
+  const c = parseInt(coords[1]);
 
   // Check if the column is full
   r = currColumns[c];
@@ -92,7 +108,7 @@ function setPiece() {
   board[r][c] = currentPlayer;
   const cell = document.getElementById(`${r.toString()}-${c.toString()}`);
   if (currentPlayer === playerRed) {
-    cell.classList.add('red-cell ');
+    cell.classList.add('red-cell');
     currentPlayer = playerYellow;
   } else {
     cell.classList.add('yellow-cell');
@@ -108,28 +124,28 @@ function setPiece() {
 
 // Set the game
 function setGame() {
-  // board = [];
+  board = [];
   currColumns = [5, 5, 5, 5, 5, 5, 5]; // Current columns
 
   // Create the board array
-  for (let r = 0; r < rows; r++) {
-    const row = [''];
-    for (let c = 0; c < cols; c++) {
+  for (let r = 0; r < rows; r += 1) {
+    const row = [];
+    for (let c = 0; c < cols; c += 1) {
       // Add the cells to the board
-      row.push(null);
+      row.push(' ');
 
       // Add the cells to the DOM
+      // const board = document.getElementById('board');
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
       cell.addEventListener('click', setPiece);
       // Add an id to the cell for easy access
       cell.id = `${r.toString()}-${c.toString()}`;
-      board.append(cell);
-
+      document.getElementById('board').append(cell);
       // When the cells are clicked
     }
+    board.push(row);
   }
-  board.push(rows);
 }
 
 window.onload = () => {

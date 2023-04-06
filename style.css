@@ -41,37 +41,7 @@ body {
   background-color: yellow;
 }
 
-/* #game {
-  height: 540px;
-  width: 630px;
-}
-
-h1 {
-  font-family: 'delicious', sans-serif;
-  color: #634848;
-  margin-top: 1rem;
+#winner {
   text-align: center;
-} */
-
-/* table {
-  margin: 1rem auto;
-  background-color: #0a5cf3;
-  padding: 0.2rem;
+  font-family: inherit;
 }
-
-td {
-  color: #fff;
-  border: 1px solid #9e9a9a;
-  padding: 1rem 2.7rem;
-  text-align: center;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.empty {
-  border: 1px dotted #d6d5d1;
-}
-
-.empty:hover {
-  background-color: yellow;
-} */
