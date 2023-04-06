@@ -41,7 +41,7 @@ body {
   background-color: yellow;
 }
 
-.winner {
+#winner {
   text-align: center;
   font-family: inherit;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 // const board = document.querySelector('#board');
 // const cells = document.querySelectorAll('.empty');
 
@@ -20,10 +21,10 @@ function setWinner(r, c) {
   const winner = document.getElementById('winner');
   if (board[r][c] === playerRed) {
     winner.innerText = 'Red player wins!';
-    // console.log(winner);
   } else {
     winner.innerText = 'Yellow player wins!';
   }
+
   gameOver = true;
 }
 
