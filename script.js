@@ -1,16 +1,14 @@
 /* eslint-disable radix */
-// const board = document.querySelector('#board');
-// const cells = document.querySelectorAll('.empty');
-
+const winner = document.getElementById('winner');
 const playerRed = 'R'; // Red player
 const playerYellow = 'Y'; // Yellow player
 let currentPlayer = playerRed; // Current player
 
 let gameOver = false; // Game over flag
-let board; // Board array
+// let board; // Board array
 
 let currColumns; // Current columns
-// let board; // Board array
+let board; // Board array
 
 const rows = 6; // Rows
 const cols = 7; // Columns
@@ -18,7 +16,7 @@ const cols = 7; // Columns
 // Set the winner
 function setWinner(r, c) {
   // Set the game over flag
-  const winner = document.getElementById('winner');
+  // const winner = document.getElementById('winner');
   if (board[r][c] === playerRed) {
     winner.innerText = 'Red player wins!';
   } else {
@@ -46,7 +44,7 @@ function checkWinner() {
 
   // Checking vertically
   for (let c = 0; c < cols; c += 1) {
-    for (let r = 0; r < rows - 3; r += 1) {
+    for (let r = 0; r < rows - 3; r += 1) { // Why we use three, to check three ahead of us
       if (board[r][c] !== ' ') {
         if (board[r][c] === board[r + 1][c]
           && board[r + 1][c] === board[r + 2][c]
@@ -137,6 +135,7 @@ function setGame() {
       row.push(' ');
 
       // Add the cells to the DOM
+      // const board = document.getElementById('board');
       const cell = document.createElement('div');
       cell.classList.add('cell-empty');
       cell.addEventListener('click', setPiece);
@@ -145,7 +144,7 @@ function setGame() {
       document.getElementById('board').append(cell);
       // When the cells are clicked
     }
-    board.push(rows);
+    board.push(row);
   }
 }
 
