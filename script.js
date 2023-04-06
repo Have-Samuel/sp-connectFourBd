@@ -1,8 +1,4 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-plusplus */
-/* eslint-disable radix */
-/* eslint-disable no-const-assign */
-const board = document.querySelector('#board');
+// const board = document.querySelector('#board');
 // const cells = document.querySelectorAll('.empty');
 
 const playerRed = 'R'; // Red player
@@ -10,6 +6,8 @@ const playerYellow = 'Y'; // Yellow player
 const currentPlayer = playerRed; // Current player
 
 const gameOver = false; // Game over flag
+const board; // Board array
+
 let currColumns; // Current columns
 // let board; // Board array
 
@@ -132,10 +130,10 @@ function setGame() {
 
   // Create the board array
   for (let r = 0; r < rows; r++) {
-    const row = [''];
+    const row = [];
     for (let c = 0; c < cols; c++) {
       // Add the cells to the board
-      row.push(null);
+      row.push(' ');
 
       // Add the cells to the DOM
       const cell = document.createElement('div');
@@ -143,12 +141,11 @@ function setGame() {
       cell.addEventListener('click', setPiece);
       // Add an id to the cell for easy access
       cell.id = `${r.toString()}-${c.toString()}`;
-      board.append(cell);
-
+      document.getElementById('board').append(cell);
       // When the cells are clicked
     }
+    board.push(rows);
   }
-  board.push(rows);
 }
 
 window.onload = () => {
