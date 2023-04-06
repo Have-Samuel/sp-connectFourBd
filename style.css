@@ -40,3 +40,8 @@ body {
 .yellow-cell {
   background-color: yellow;
 }
+
+.winner {
+  text-align: center;
+  font-family: inherit;
+}
