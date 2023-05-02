@@ -16,7 +16,7 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < HEIGHT; y + 1) {
     board.push(Array.from({ length: WIDTH }));
   }
 }
@@ -31,7 +31,7 @@ function makeHtmlBoard() {
   top.setAttribute('id', 'column-top');
   top.addEventListener('click', handleClick);
 
-  for (let x = 0; x < WIDTH; x++) {
+  for (let x = 0; x < WIDTH; x + 1) {
     const headCell = document.createElement('td');
     headCell.setAttribute('id', x);
     top.append(headCell);
@@ -40,10 +40,10 @@ function makeHtmlBoard() {
   board.append(top);
 
   // make main part of board
-  for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < HEIGHT; y + 1) {
     const row = document.createElement('tr');
 
-    for (let x = 0; x < WIDTH; x++) {
+    for (let x = 0; x < WIDTH; x + 1) {
       const cell = document.createElement('td');
       cell.setAttribute('id', `${y}-${x}`);
       row.append(cell);
@@ -56,7 +56,7 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
-  for (let y = HEIGHT - 1; y >= 0; y--) {
+  for (let y = HEIGHT - 1; y >= 0; y - 1) {
     if (!board[y][x]) {
       return y;
     }
