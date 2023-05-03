@@ -70,7 +70,7 @@ function placeInTable(y, x) {
   const piece = document.createElement('div');
   piece.classList.add('piece');
   piece.classList.add(`p${currPlayer}`);
-  piece.style.top = -50 * (y + 2);
+  piece.style.top = -50 * (y + 2); // 50px per square * (y + 2) to account for the top row
 
   const spot = document.getElementById(`${y}-${x}`);
   spot.append(piece);
@@ -97,12 +97,12 @@ function handleClick(evt) {
   // place piece in board and add to HTML table
   board[y][x] = currPlayer;
   placeInTable(y, x);
-  
+
   // check for win
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
   }
-  
+
   // check for tie
   if (board.every(row => row.every(cell => cell))) {
     return endGame('Tie!');
