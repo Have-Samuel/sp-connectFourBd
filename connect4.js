@@ -84,3 +84,39 @@ placeInTable(y, x) {
 }
 
 /** endGame: announce game end */
+endGame(msg) {
+  alert(msg);
+  const top = document.querySelector("#column-top");
+  top.removeEventListener('click', this.handleGameClick);
+}
+
+/** handleClick: handle click of column top to play piece */
+handleClick(e) {
+  // get x from ID of clicked cell
+  const x = +e.taget.id;
+
+  // get next spot in column (if none, ignore click)
+  const y = this.findSpotForCol(x);
+  if (y === null) {
+    return;
+  }
+
+  // Place the piece on the board and add to HTML thable
+  this.board[x][y] = this.currPlayer;
+  this.placeInTable(y, x);
+
+  // check for tie
+  if (this.Board.every((row) => row.every((cell) => cell))) {
+    return this.endGame('Tie');
+  }
+  // Check for win
+  if (this.checkForWin()) {
+    thisgameOver = true;
+    return this.endGame(`The ${this.currPlayer.color} Player Won!`);
+  }
+
+  // Switch Players
+  this.currPlayer = 
+  this.currPlayer === this.players[0] ? this.players[1] : this.players[0];
+}
+
